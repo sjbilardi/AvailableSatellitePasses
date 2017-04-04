@@ -24,7 +24,8 @@ from tkinter import filedialog
 #                                         title="Select Access Reports")
 
 # get list of files in directory
-file_dir = "/Users/sjbilardi/Desktop/OSCOM/Iridium_Obs"
+cwd = os.getcwd()
+file_dir = cwd+"/examplePasses/"
 file_path = sorted(os.listdir(file_dir))
 
 # verify files, use only csv
@@ -44,22 +45,22 @@ for file_name in file_path:
 	name = file_name.split('/')[-1].split('.')[0]
 	sat_number = 1
 	# parse through file
-	with open(file_name) as file:
+	with open(file_dir+"/"+file_name) as file:
 		data = []
 		# check each line
 		for line in file:
 			data.append(line)
 			# if line is newline statement only
 			if line is '\n':
-				if not os.path.exists(name+'/'):
-					os.makedirs(name)
+				if not os.path.exists(file_dir+"/"+name+'/'):
+					os.makedirs(file_dir+"/"+name)
 				# get pad 0 if single digit 
 				if sat_number < 10:
 					numb = '0'+str(sat_number)
 				else:
 					numb = str(sat_number)
 				# make new file to save
-				sat_file = open(name+'/'+name+'_'+str(numb)
+				sat_file = open(file_dir+"/"+name+'/'+name+'_'+str(numb)
 													+'.csv', 'w')
 				# write data for each satellite to new file
 				for d in data:

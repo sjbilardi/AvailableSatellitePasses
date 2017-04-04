@@ -16,9 +16,11 @@ from tkinter import filedialog
 # root.withdraw()
 # file_path = filedialog.askopenfilenames(initialdir="C:\\Users\eagles\Desktop",
 #                                         title="Select Access Reports")
-file_dir = "/Users/sjbilardi/Desktop/OSCOM/Iridium_Obs"
 
-save_dir = "/Users/sjbilardi/Desktop/OSCOM/Iridium_Obs/results"
+cwd = os.getcwd()
+file_dir = cwd+"/"+"examplePasses/"
+
+save_dir = cwd+"/"+"availabilityPlots/"
 
 ref_facility = ['DaytonaBeach', 'Daytona Beach, FL'] # [tag, name]
 
@@ -246,7 +248,7 @@ for facility in facilities:
                 ax.set_xlabel('Date', labelpad=pad_length)
                 ax.set_ylabel('Satellite Number', labelpad=pad_length)
                 fig.subplots_adjust(wspace=0.4, hspace=0.5)
-                plt.savefig('sat_availability_'+facility[0]+'.pdf', format = 'pdf')
+                plt.savefig(save_dir+'sat_availability_'+facility[0]+'.pdf', format = 'pdf')
                 print("Plotted "+facility[0]+".")
                 # plt.show()
                     
