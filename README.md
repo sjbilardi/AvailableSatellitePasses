@@ -20,5 +20,5 @@ Accepted passes were based off the following contrainsts:
 
 All Python files are configured to use the files in the "examplePasses" folder. To run the entire script:
 
-1. Run "separateSatellites.py"
+1. First, run "separateSatellites.py"
 2. Run "CompareAvailablePasses.py"
